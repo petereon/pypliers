@@ -1,4 +1,4 @@
-from pypliers.dicttools import flatten_dict, walk_deep, assoc, assoc_in, get, get_in, dissoc, dissoc_in
+from pypliers.dicttools import flatten, walk_deep, assoc, assoc_in, get, get_in, dissoc, dissoc_in
 from ward import test
 from expycted import expect
 from operator import methodcaller
@@ -62,7 +62,7 @@ def _():
         },
         'e': 4,
     }
-    expect(list(flatten_dict(d))).to.be_equal_to([
+    expect(list(flatten(d))).to.be_equal_to([
         (['a'], 1),
         (['b', 'c'], 2),
         (['b', 'd', 'e'], 3),

@@ -1,6 +1,6 @@
 """A collection of functions for working with dictionaries."""
-from collections.abc import Callable, Iterator
-from typing import Any
+from collections.abc import Callable
+from typing import Any, Generator
 
 
 def get(d: dict, key: str, default: Any = None) -> Any:
@@ -100,7 +100,7 @@ def dissoc_in(d: dict, keys: list) -> Any:
     return assoc_in(d, keys[:-1], dissoc(get_in(d, keys[:-1]), keys[-1]))
 
 
-def __flatten_dict(d: dict, parent_keys: list) -> Iterator:
+def __flatten_dict(d: dict, parent_keys: list) -> Generator:
     for key, value in d.items():
         keys = [*parent_keys, key]
         if isinstance(value, dict):
@@ -109,7 +109,7 @@ def __flatten_dict(d: dict, parent_keys: list) -> Iterator:
             yield (keys, value)
 
 
-def flatten_dict(d: dict) -> Iterator[tuple[list[Any], Any]]:
+def flatten(d: dict) -> Generator[tuple[list[Any], Any], None, None]:
     """Flatten a dictionary into an iterator of tuples containing a list of keys and a value.
 
     Args:
