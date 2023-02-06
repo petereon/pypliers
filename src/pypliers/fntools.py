@@ -5,7 +5,7 @@ T = TypeVar("T")
 U = TypeVar("U")
 
 
-def if_fn(cond: bool, do_true: Tuple[Callable[..., T], ...], do_false: Tuple[Callable[..., U], ...]) -> Union[T, U]:
+def iff(cond: bool, do_true: Tuple[Callable[..., T], ...], do_false: Tuple[Callable[..., U], ...]) -> Union[T, U]:
     """Execute a specific expression along with the arguments to pass to it depending on a condition.
 
     Args:
